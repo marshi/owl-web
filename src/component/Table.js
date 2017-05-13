@@ -13,7 +13,9 @@ export default class Table extends React.Component {
           <tbody>
           {
             this.state.items.map((item, index) => {
-              return <Row index={index} item={item}/>
+              return (
+                  <Row key={index} index={index} item={item}/>
+              )
             })
           }
           </tbody>
