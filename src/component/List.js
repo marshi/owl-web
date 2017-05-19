@@ -9,14 +9,15 @@ export default class List extends React.Component {
     if (this.props.mark) {
       a = <p>true</p>
     }
+    console.log(this.props);
     return (
       <ul>
-        {this.props.tasks.map (
-          task => {
+        <button onClick={this.props.fetch} value="aiueo"/>
+        {a}
+        {this.props.tickets.map (
+          ticket => {
             return (
-              <li key={task.name}>{task.name}
-                <button onClick={this.props.click} value="aiueo"/>
-                {a}
+              <li key={ticket.id}>{ticket.title}
               </li>
             );
           })}
