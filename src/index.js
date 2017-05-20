@@ -5,8 +5,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux";
 import App from './App';
 import './index.css';
+import "./normalize.min.css";
 import check  from "./reducer/check"
-import logger from './middleware/logger'
 
 let initial={
   mark: false,

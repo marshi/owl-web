@@ -5,6 +5,7 @@ import List from "./component/List";
 import check from "./action/ckeck"
 import get from "./action/fetcher"
 import { connect } from "react-redux"
+import TicketCreateForm from "./component/TicketCreateForm";
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <List tasks={tasks} click={this.props.click} fetch={this.props.fetch} mark={this.props.mark} tickets={this.props.tickets}/>
+        <TicketCreateForm />
       </div>
     );
   }
