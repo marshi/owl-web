@@ -1,29 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
-import { createStore, combineReducers, applyMiddleware, compose } from "redux"
-import { Provider } from "react-redux";
-import App from './App';
-import './index.css';
+import {applyMiddleware, combineReducers, compose, createStore} from "redux";
+import {Provider} from "react-redux";
+import "./index.css";
 import "./normalize.min.css";
-import check  from "./reducer/check"
+import check from "./reducer/check";
+import {routerReducer, routerMiddleware, syncHistoryWithStore} from "react-router-redux";
+import {browserHistory, Router} from 'react-router/lib'
+import routes from './routes'
 
-let initial={
-  mark: false,
-  tickets: []
-};
+const initial = {};
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  combineReducers({check}),
+  combineReducers({check, routing: routerReducer}),
   initial,
-  composeEnhancers(applyMiddleware(thunk)),
+  composeEnhancers(applyMiddleware(thunk, routerMiddleware(browserHistory))),
 );
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={history} routes={routes}/>
   </Provider>,
   document.getElementById('root')
 );

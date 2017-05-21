@@ -1,6 +1,7 @@
 import {RECIEVE, FETCH, ERROR} from "../action/fetcher"
 
 export default function check(state = {mark: false, tickets: []}, action) {
+
   switch (action.type) {
     case "CHECK":
       return Object.assign({}, state, {mark: !state.mark});
