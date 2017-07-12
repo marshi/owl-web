@@ -4,22 +4,21 @@ export default class Table extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {items: [{name: "name", class: "class"}, {name: "name2"}]}
+    this.state = { items: [{ name: "name", class: "class" }, { name: "name2" }] }
   }
 
   render() {
     return (
-        <table>
-          <tbody>
-          {
-            this.state.items.map((item, index) => {
-              return (
-                  <Row key={index} index={index} item={item}/>
-              )
-            })
-          }
-          </tbody>
-        </table>
+      <table>
+        <tbody> {
+          this.state.items.map((item, index) => {
+            return (
+              <Row key={index} index={index} item={item} />
+            )
+          })
+        }
+        </tbody>
+      </table>
     )
   }
 
@@ -28,13 +27,13 @@ export default class Table extends React.Component {
 class Row extends React.Component {
   render() {
     return (
-        <tr key={this.props.index}>
-          {
-            Object.keys(this.props.item).map((key, index) => {
-              return <td key={index}>{this.props.item[key]}</td>
-            })
-          }
-        </tr>
+      <tr key={this.props.index}>
+        {
+          Object.keys(this.props.item).map((key, index) => {
+            return <td key={index}>{this.props.item[key]}</td>
+          })
+        }
+      </tr>
     )
   }
 }

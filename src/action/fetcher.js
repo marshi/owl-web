@@ -26,7 +26,7 @@ export default function get() {
   return function(dispatch) {
     fetch("http://localhost:8080/tickets")
       .then(res => res.json())
-      .then(json => {console.log(json); dispatch(request(json))})
+      .then(json => {console.log("get"); console.log(json); dispatch(request(json))})
       .catch(e => dispatch(error()));
   }
 }

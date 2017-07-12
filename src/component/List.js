@@ -5,15 +5,16 @@ import React from "react";
 
 export default class List extends React.Component {
 
-  componentDidMount() {
-    this.props.fetch()
+  componentWillMount() {
+    this.props.fetch();
   }
 
   render() {
+    let tickets = this.props.tickets === undefined ? [] : this.props.tickets;
     return (
       <ul>
-        <button onClick={this.props.fetch} value="aiueo"/>
-        {this.props.tickets.map (
+        <button onClick={this.props.fetch} value="aiueo" />
+        {tickets.map(
           ticket => {
             return (
               <li key={ticket.id}>{ticket.title}</li>

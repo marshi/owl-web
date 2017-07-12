@@ -1,18 +1,23 @@
-import React, {Component} from "react";
-import logo from "./logo.svg";
+import React, {Component, Children} from "react";
 import "./App.css";
-import List from "./component/List";
 import check from "./action/ckeck";
 import get from "./action/fetcher";
 import {connect} from "react-redux";
-import TicketCreateForm from "./component/TicketCreateForm";
 
 class App extends Component {
 
   render() {
+    console.log("aiueo");
+    console.log(this.props);
     return (
       <div>
-        {this.props.children}
+        {this.props.children && React.cloneElement(
+          this.props.children,
+          {
+            fetch: this.props.fetch,
+            tickets: this.props.tickets
+          }
+        )}
       </div>
     );
   }
@@ -20,15 +25,13 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    click: () => dispatch(check()),
     fetch: () => dispatch(get())
   }
 }
 
 function mapStateToProps(state) {
   return {
-    mark: state.check.mark,
-    tickets: state.check.tickets
+    tickets: state.fetchState.tickets
   };
 }
 
