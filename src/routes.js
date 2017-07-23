@@ -2,7 +2,7 @@ import React from 'react'
 import App from "./App";
 import {IndexRoute, Route} from "react-router/lib";
 import Index from "./component/Index";
-import TicketCreate from "./TicketCreate";
+import TicketCreate from "./component/page/TicketCreate";
 import List from "./component/List";
 
 export default (

@@ -2,6 +2,7 @@ import React, {Component, Children} from "react";
 import "./App.css";
 import check from "./action/ckeck";
 import get from "./action/fetcher";
+import post from "./api/post";
 import {connect} from "react-redux";
 
 class App extends Component {
@@ -14,8 +15,7 @@ class App extends Component {
         {this.props.children && React.cloneElement(
           this.props.children,
           {
-            fetch: this.props.fetch,
-            tickets: this.props.tickets
+            ...this.props
           }
         )}
       </div>
@@ -25,7 +25,8 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetch: () => dispatch(get())
+    fetch: () => dispatch(get()),
+    post: (path, body) => post(path, body)
   }
 }
 
